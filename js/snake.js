@@ -1,5 +1,4 @@
 var snake = (function () {
-
     var FOOD_NUM = 3;
     var SIZE = 10;
     var X_MAX = 30;
@@ -12,7 +11,7 @@ var snake = (function () {
     var LEFT = 37;
     var RIGHT = 39;
 
-    // 点构造器
+    // 点的构造器
     var Point = function (x, y) {
         this.x = x;
         this.y = y;
@@ -46,31 +45,11 @@ var snake = (function () {
         return point;
     };
 
-
     var canvas;
     var pen;
     var key;
     var body;
     var foods;
-
-    // 清除画布
-    function clear() {
-        pen.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    // 初始化状态变量
-    function init() {
-        canvas = document.getElementById("game");
-        pen = canvas.getContext("2d");
-        key = undefined;
-        body = [];
-        foods = [];
-        body.push(Point.random());
-        for (var i=0; i<FOOD_NUM; i++) {
-            foods.push(Point.random())
-        }
-        $(document).keydown(key_handler)
-    }
 
     // 处理响应键盘事件
     function key_handler (event) {
@@ -89,6 +68,20 @@ var snake = (function () {
             new_key = key;
         }
         key = new_key;
+    }
+
+    // 初始化状态变量
+    function init() {
+        canvas = document.getElementById("game");
+        pen = canvas.getContext("2d");
+        key = undefined;
+        body = [];
+        foods = [];
+        body.push(Point.random());
+        for (var i=0; i<FOOD_NUM; i++) {
+            foods.push(Point.random())
+        }
+        $(document).keydown(key_handler);
     }
 
     function is_eat() {
@@ -132,11 +125,15 @@ var snake = (function () {
         start();
     }
 
+    // 清除画布
+    function clear() {
+        pen.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
     function draw_snake_cell(x, y) {
         pen.fillStyle = COLOR;
         pen.fillRect(x*SIZE, y*SIZE, SIZE, SIZE);
     }
-
 
     function draw_food(x, y) {
         pen.fillStyle = FOOD_COLOR;
