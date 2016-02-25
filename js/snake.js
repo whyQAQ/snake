@@ -1,4 +1,5 @@
 var snake = (function () {
+    "use strict";
     var FOOD_NUM = 3;
     var SIZE = 10;
     var X_MAX = 30;
@@ -12,6 +13,11 @@ var snake = (function () {
     var LEFT = 37;
     var RIGHT = 39;
 
+    var canvas;
+    var pen;
+    var key;
+    var body;
+    var foods;
     // 点的构造器
     var Point = function (x, y) {
         this.x = x;
@@ -46,13 +52,6 @@ var snake = (function () {
         }
         return point;
     };
-
-    var canvas;
-    var pen;
-    var key;
-    var body;
-    var foods;
-
     // 处理响应键盘事件
     function key_handler(event) {
         event.preventDefault();
@@ -87,7 +86,6 @@ var snake = (function () {
         $(document).keydown(key_handler);
     }
 
-
     function make_new_food() {
         var new_food = Point.random();
         var i;
@@ -99,7 +97,7 @@ var snake = (function () {
             }
         }
         for (i=0; i<foods.length;i++) {
-            food = foods[i];
+            var food = foods[i];
             if (new_food.x == food.x && new_food.y == food.y) {
                 return make_new_food();
             }
@@ -168,7 +166,7 @@ var snake = (function () {
         }
 
         else {
-            for (i = 0; i < body.length; i++) {
+            for (var i = 0; i < body.length; i++) {
                 draw_snake_cell(body[i].x, body[i].y);
             }
 

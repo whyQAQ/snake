@@ -1,24 +1,11 @@
 body{
-    background-color: #D9B284;
-
+    background-color: #d4d9b2;
 }
 
 #game{
     position: absolute;
     margin-left: 10%;
     margin-top: 5%;
-    border: 1px solid #62889F;
     background-color: #d2f1dc;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px #353437;
-}
-
-#canvas{
-    position: absolute;
-    margin-left: 10%;
-    margin-top: 50%;
-    border: 1px solid #62889F;
-    background-color: #d2f1dc;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px #353437;
 }
