@@ -209,5 +209,5 @@ var snake = (function () {
     return {
         start: start
     }
-})();
+}());
 
